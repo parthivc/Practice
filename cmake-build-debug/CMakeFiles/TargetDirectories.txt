@@ -1,3 +1,0 @@
-/Users/parthivc/Documents/College/Internships/Coding Practice/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/parthivc/Documents/College/Internships/Coding Practice/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/parthivc/Documents/College/Internships/Coding Practice/cmake-build-debug/CMakeFiles/Coding_Practice.dir
