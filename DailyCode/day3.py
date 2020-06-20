@@ -39,6 +39,7 @@ def serialize(root):
 
 def main():
     node = Node('root', Node('left', Node('left.left')), Node('right'))
+    # deepcode ignore AttributeLoadOnNone: Hardcoding initial value
     print(deserialize(serialize(node)).left.left.val == 'left.left')
 
 
