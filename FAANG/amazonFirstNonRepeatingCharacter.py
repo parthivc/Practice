@@ -3,12 +3,12 @@
 # Return _ if all characters are repeating
 
 
-# Technically O(N^2) because array.index and array.rindex are O(N) operations
+# Technically O(N^2) because array.rindex are O(N) operations
 # O(N^2) time and O(1) space
 def firstNonRepeatingCharacterN2(data):
     data = ''.join(data)
-    for elem in data:
-        if data.index(elem) == data.rindex(elem):
+    for index, elem in enumerate(data):
+        if index == data.rindex(elem):
             return elem
     return '_'
 
