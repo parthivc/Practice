@@ -15,7 +15,7 @@ def firstDuplicate(array):
 
 
 def main():
-    data = [int(elem) for elem in input("Input array: ").split()]
+    data = list(map(int, input("Input array: ").split()))
     print(firstDuplicate(data))
 
 

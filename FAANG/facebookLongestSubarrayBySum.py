@@ -19,7 +19,6 @@ def findLongestSubarrayBySum(data, target):
     return indices
     
 
-
 def main():
     data = [int(elem) for elem in input("Input array: ").split()]
     target = int(input("Enter target sum: "))

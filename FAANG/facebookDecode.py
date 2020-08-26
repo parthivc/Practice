@@ -20,7 +20,6 @@ def num_ways(data):
     return solve(data, len(data), [None] * (len(data) + 1))
 
 
-
 def main():
     data = sys.argv[1]
     print(num_ways(data))
