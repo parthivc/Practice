@@ -39,6 +39,28 @@ def mergeSort(array, swap, left, right):
 
 def getInversions(array):
     return mergeSort(array, [0] * len(array), 0, len(array) - 1)
+
+
+def efficientInversions(array):
+    length = len(array)
+    if length == 1:
+        return 0
+    mid = length // 2
+    right = array[:mid]
+    left = array[mid:]
+    inversions = efficientInversions(right) + efficientInversions(left)
+    leftBound = length - mid
+    r = 0
+    l = 0
+    for i in range(length):
+        if r < mid and (l >= leftBound or right[r] <= left[l]):
+            array[i] = right[r]
+            inversions += l
+            r += 1 
+        elif l < leftBound:
+            array[i] = left[l]
+            l += 1
+    return inversions
         
 
 def main():
@@ -50,7 +72,7 @@ def main():
     print()
     for test in tests:
         preSort = test[:]
-        result = getInversions(test)
+        result = efficientInversions(test)
         print("Array:\t\t{}\nSorted array:\t{}\nInversions:\t{}\n".format(preSort, test, result))
 
 
