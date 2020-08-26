@@ -1,8 +1,6 @@
 # https://www.youtube.com/watch?v=HWW-jA6YjHk
 # Given a list of coins and a target sum, return the smallest number of coins required to achieve that sum
 
-import sys
-
 
 def gcd(a, b):
     return b if a == 0 else gcd(b % a, a)
@@ -20,23 +18,23 @@ def minCoins(target, coins):
     lcm = listLCM(coins)
     result = 0
     if target > lcm:
-        result += target // max(coins)
+        result += (target // lcm) * (lcm // max(coins))
         target %= lcm
     visited = set()
-    queue = [target]
+    queue = [(target, ([max(coins)] * result if result else []))]
     depth = 0
     while queue:
         size = len(queue)
         while size != 0:
-            current = queue.pop(0)
+            current, path = queue.pop(0)
             size -= 1
             if current in visited or current < 0:
                 continue
             elif current == 0:
-                return depth + result
+                return depth + result, path
             visited.add(current)
             for coin in coins:
-                queue.append(current - coin)
+                queue.append((current - coin, path + [coin]))
         depth += 1
     return -1
 
@@ -48,7 +46,22 @@ def main():
         coins = list(map(int, coins.split()))
     else:
         coins = [25, 10, 5, 1]
-    print("\n{}\n".format(minCoins(target, coins)))
+    result = minCoins(target, coins)
+    table = dict()
+    if result == -1:
+        print("\nResult not possible\n")
+    else:
+        for coin in result[1]:
+            if coin in table:
+                table[coin] += 1
+            else:
+                table[coin] = 1
+        print("\nNumber of coins: {}".format(result[0]))
+        print("\nCoin Value | Coin Frequency\n")
+        for key in table:
+            print("{}\t   |  \t{}".format(key, table[key]))
+        print()
+
 
 
 if __name__ == "__main__":
