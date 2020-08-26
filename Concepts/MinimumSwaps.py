@@ -17,7 +17,7 @@ def minimumSwaps(array):
 
 def beautifyArray(array):
     # This works if the array needs to be sorted but can be returned in either direction
-    return min(minimumSwaps(array), minimumSwaps(list(reversed(array))))
+    return min(minimumSwaps(array[:]), minimumSwaps(list(reversed(array[:]))))
 
 
 def main():
