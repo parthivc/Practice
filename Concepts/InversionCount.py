@@ -1,6 +1,13 @@
 # This is a modified version of merge sort that counts the total number of inversions
 # required to make an unsorted array into a sorted array
 
+
+# Time Complexity:
+# O(n log(n))
+
+# Space Complexity:
+# O(n)
+
 def mergeSort(array, swap, left, right):
     inversions = 0
     if left < right:
