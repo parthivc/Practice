@@ -61,7 +61,7 @@ def efficientInversions(array):
             array[i] = left[l]
             l += 1
     return inversions
-        
+    
 
 def main():
     tests = [
