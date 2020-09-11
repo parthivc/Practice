@@ -32,7 +32,7 @@ class easyHeap:
 
 class hardHeap:
 
-    def init(self, minMax, values=[]):
+    def __init__(self, minMax, values=[]):
         self.min = not bool(minMax)  # 1 is maxHeap, 0 is minHeap
         self.heap = values
         if self.heap:
@@ -42,18 +42,18 @@ class hardHeap:
     
     def heapify(self):
         for start in range((len(self.heap) - 2) // 2, -1, -1):
-            self.heapDown(start, len(self.heap) - 1)
+            self.heapDown(start, len(self.heap))
         
     def heapDown(self, start, end):
         root = start
-        left = 2 * root + 1
-        right = left + 1
+        left = 2 * start + 1
+        right = 2 * start + 2
         if left < end and self.heap[root] < self.heap[left]:
             root = left
         if right < end and self.heap[root] < self.heap[right]:
             root = right
         if root != start:
-            self.swap(root, start)
+            self.heap[root], self.heap[start] = self.heap[start], self.heap[root]
             self.heapDown(root, end)
 
     def swap(self, a, b):
@@ -72,27 +72,22 @@ class hardHeap:
         self.heapify()
         return value
 
-        
-
 ##############################################################################################
-
 
 def main(Heap):
     startTime = time.time()
-    Heap.values = [99, 80, 85, 17, -1, 30, 84, 2, 16, 1]
-    Heap.heapify()
-    print(Heap.values)
-    Heap.push(18)
-    print(Heap.values)
-    n = len(Heap.values)
-    for x in range(n):
+    print(Heap.heap)
+    Heap.push(50)
+    Heap.push(0)
+    n = len(Heap.heap)
+    for _ in range(n):
         print(Heap.pop())
     endTime = time.time() - startTime
-    print("\nThe total time taken for all operation is {} seconds\n".format(endTime))
+    print("\nThe total time taken for all operation is {} seconds\n".format(endTime * 10000))
 
 
 if __name__ == "__main__":
     print("\nEasy Heap Testing (Min Heap)\n")
-    main(easyHeap(0))
+    main(easyHeap(0, [99, 80, 85, 17, -1, 30, 84, 2, 16, 1]))
     print("Hard Heap Testing (Min Heap)\n")
-    main(hardHeap(0))
+    main(hardHeap(0, [99, 80, 85, 17, -1, 30, 84, 2, 16, 1]))
