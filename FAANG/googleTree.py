@@ -39,15 +39,15 @@ def subTreeNodeDepthSum(root):
         result = [1, 0]  # Number of nodes, sum of depths
         if root.left:
             lResult = dfsHelper2(root.left)
-            print(root.left.value, lResult)
+            # print(root.left.value, lResult)
             result[0] += lResult[0]
             result[1] += lResult[0] + lResult[1]
         if root.right:
             rResult = dfsHelper2(root.right)
-            print(root.right.value, rResult)
+            # print(root.right.value, rResult)
             result[0] += rResult[0]
             result[1] += rResult[0] + rResult[1]
-        # print(root.value, result)
+        print(root.value, result)
         return result
     return dfsHelper2(root)
 
