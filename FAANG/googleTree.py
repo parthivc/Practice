@@ -24,16 +24,29 @@ class Node:
 def nodeDepthSum(root):
     nodeDepthSum.answer = 0
     def dfsHelper(root, depth):
-        if root:
-            nodeDepthSum.answer += depth
-            if root.right:
-                dfsHelper(root.right, depth + 1)
-            if root.left:
-                dfsHelper(root.left, depth + 1)
+        nodeDepthSum.answer += depth
+        if root.right:
+            dfsHelper(root.right, depth + 1)
+        if root.left:
+            dfsHelper(root.left, depth + 1)
     dfsHelper(root, 0)
     return nodeDepthSum.answer
 
 # Task 2: Return the sum of the node depths for all of the subtrees in the tree
+
+def subTreeNodeDepthSum(root):
+    def dfsHelper(root):
+        result = [1, 0]  # Number of nodes, sum of depths
+        if root.right:
+            rResult = dfsHelper(root.right)
+            result[0] += rResult[0]
+            result[1] += rResult[0] + rResult[1]
+        if root.left:
+            lResult = dfsHelper(root.left)
+            result[0] += lResult[0]
+            result[1] += lResult[0] + lResult[1]
+        return result
+    return dfsHelper(root)[1]
 
 
 def main():
