@@ -6,6 +6,7 @@ class Node:
         self.value = value
         self.left = left
         self.right = right
+        self.size = 0
 
 
 
@@ -35,21 +36,25 @@ def nodeDepthSum(root):
 # Task 2: Return the sum of the node depths for all of the subtrees in the tree
 
 def subTreeNodeDepthSum(root):
-    def dfsHelper2(root):
+    subTreeNodeDepthSum.answer = 0
+    def dfsHelper(root):
         result = [1, 0]  # Number of nodes, sum of depths
         if root.left:
-            lResult = dfsHelper2(root.left)
-            # print(root.left.value, lResult)
+            lResult = dfsHelper(root.left)
             result[0] += lResult[0]
             result[1] += lResult[0] + lResult[1]
         if root.right:
-            rResult = dfsHelper2(root.right)
-            # print(root.right.value, rResult)
+            rResult = dfsHelper(root.right)
             result[0] += rResult[0]
             result[1] += rResult[0] + rResult[1]
-        print(root.value, result)
+        subTreeNodeDepthSum.answer += result[1]
         return result
-    return dfsHelper2(root)
+    dfsHelper(root)
+    return subTreeNodeDepthSum.answer
+
+# Task 3: Given a target node, return the sum of node depths for all nodes to the target node
+
+
 
 
 def main():
