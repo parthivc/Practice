@@ -95,6 +95,7 @@ def asyncioTest(sites):
 
 # Multiprocessing is slower in this context because this operation is IO bound
 # Meaning that the overhead required to spawn pool workers takes more time than it would with threading or asyncio
+# Each pool worker requires that a separate python interpreter be launched on each core (logical core means 2 per CPU core (hyperthreading))
 # Additionally, these methods are not within submethods like the other examples because of multiprocessing
 # In order to map a function to a multiprocessing pool, it must be defined at the top layer of abstraction
 # Meaning that it cannot be a nested method
