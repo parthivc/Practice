@@ -51,6 +51,29 @@ class idAllocator:
             self.available += 1
 
 
+# O(1) allocation and release can be achieved by using a 'used' and 'available' hashset pair
+# Lowest storage uses a bit array for ids and linear search for allocation and release
+# A single set can be used to store available ids
+
+def singleSetAllocator():
+    def constructor(s):
+        size = s
+        availableIDs = set(range(s))
+
+    def allocate(availableIDs, size, specificID=None):
+        if availableIDs:
+            size -= 1
+            if specificID in availableIDs:
+                availableIDs.remove(specificID)
+                return specificID
+            return availableIDs.pop()
+        return "No IDs available"
+
+    def release(availableIDs, size, currentID):
+        availableIDs.add(currentID)
+        size += 1
+
+
 def main():
     idCount = 10 ** 5
 
