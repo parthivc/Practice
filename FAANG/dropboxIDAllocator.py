@@ -77,7 +77,7 @@ def singleSetAllocator():
 def main():
     idCount = 10 ** 5
 
-    processCount = max(2, round(math.log10(idCount)) - 2)
+    processCount = min(max(2, round(math.log10(idCount)) - 2), multiprocessing.cpu_count() // 2)
     print("\nAllocating IDs concurrently, using {} processes".format(processCount))
     newAllocator = idAllocator(10 ** 6)
     startTime = time.time()
