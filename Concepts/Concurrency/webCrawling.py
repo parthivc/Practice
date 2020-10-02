@@ -25,7 +25,7 @@ class webCrawler():
         queue = [baseURL]
         hostName = self.getHostname(baseURL)
         while queue:
-            queue2 = []
+            newQueue = []
             # Temporary set
             with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
                 threadResults = list(executor.map(HtmlParser.getUrls, queue))
@@ -34,8 +34,8 @@ class webCrawler():
                         if url not in visited and self.getHostname(url) == hostName:
                             visited.add(url)
                             # add to temporary set
-                            queue2.append(url)
-            queue = queue2
+                            newQueue.append(url)
+            queue = newQueue
             # join temporary sets
             # pass temporary set to a consumer worker that actually downloads everything
         return list(visited)
