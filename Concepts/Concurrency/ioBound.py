@@ -33,7 +33,7 @@ def synchronousTest(sites):
             for url in sites:
                 download_site(url, session)
     
-    print("\nRunning synchronous IO-bound test")
+    print("\nRunning synchronous IO-bound Assessments")
     startTime = time.time()
     download_all_sites(sites)
     duration = time.time() - startTime
@@ -62,7 +62,7 @@ def threadedTest(sites):
         with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
             executor.map(download_site, sites)
 
-    print("\nRunning threaded IO-bound test")
+    print("\nRunning threaded IO-bound Assessments")
     startTime = time.time()
     download_all_sites(sites)
     duration = time.time() - startTime
@@ -86,7 +86,7 @@ def asyncioTest(sites):
                 tasks.append(task)
             await asyncio.gather(*tasks, return_exceptions=True)
 
-    print("\nRunning asyncio IO-bound test")
+    print("\nRunning asyncio IO-bound Assessments")
     startTime = time.time()
     asyncio.get_event_loop().run_until_complete(download_all_sites(sites))  # asyncio.run(download_all_sites(sites))
     duration = time.time() - startTime
@@ -118,7 +118,7 @@ def multiprocessingDownloadAllSites(sites):
         pool.map(multiprocessingDownloadSite, sites)
 
 def multiprocessingTest(sites):
-    print("\nRunning multiprocessing IO-bound test")
+    print("\nRunning multiprocessing IO-bound Assessments")
     startTime = time.time()
     multiprocessingDownloadAllSites(sites)
     duration = time.time() - startTime

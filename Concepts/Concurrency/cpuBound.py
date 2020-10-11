@@ -9,7 +9,7 @@ def cpu_bound(number):
     return sum(i * i for i in range(number))
 
 def synchronousTest(numbers):
-    print("\nSynchronous CPU bound test")
+    print("\nSynchronous CPU bound Assessments")
     startTime = time.time()
     for number in numbers:
         cpu_bound(number)
@@ -18,7 +18,7 @@ def synchronousTest(numbers):
     return duration
 
 def threadingTest(numbers):
-    print("Threading CPU bound test")
+    print("Threading CPU bound Assessments")
     startTime = time.time()
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         executor.map(cpu_bound, numbers)
@@ -27,7 +27,7 @@ def threadingTest(numbers):
     return duration
 
 def multiprocessingTest(numbers):
-    print("Multiprocessing CPU bound test")
+    print("Multiprocessing CPU bound Assessments")
     startTime = time.time()
     with multiprocessing.Pool() as pool:
         pool.map(cpu_bound, numbers)

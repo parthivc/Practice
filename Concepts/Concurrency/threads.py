@@ -112,13 +112,13 @@ def pipelineTest():
 # This is useful if you don't want a process to start unless all threads have been spawned
 
 def main():
-    print("\nThreadlock test")
+    print("\nThreadlock Assessments")
     threadLockTest()
-    print("\nDaemon thread test")  # Daemon threads are killed after completed instead of internally running thread.shutdown like normal threads
+    print("\nDaemon thread Assessments")  # Daemon threads are killed after completed instead of internally running thread.shutdown like normal threads
     daemonThreadTest()
-    print("\nRace condition test")
+    print("\nRace condition Assessments")
     raceConditionTest()
-    print("\nPipeline producer-consumer lock test")
+    print("\nPipeline producer-consumer lock Assessments")
     pipelineTest()
     print()
 

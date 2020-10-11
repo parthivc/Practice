@@ -21,7 +21,7 @@ def main():
     # Find the maximum-minimum value in a window of size n
     n = 3
     test = [4, 5, 6, 1, 2, 3, 7, 8, 9]
-    # test = [4, 5, 6, 1, 2, 3, 1, 2, 3]
+    # Assessments = [4, 5, 6, 1, 2, 3, 1, 2, 3]
     print("\nWindow Size: \t{}\nInput: \t\t{}\nResult: \t{}\n".format(n, test, slidingWindow(test, n)))
 
 

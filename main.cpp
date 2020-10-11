@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// Problem Statement: 
+// Problem Statement:
 
 int main() {
     cout << "Hello, World!" << endl;
