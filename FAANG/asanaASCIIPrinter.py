@@ -3,11 +3,6 @@ from collections import deque
 
 class Printer:
 
-    # Edge cases:
-    # What if bounds aren't valid
-    # What if the char is an empty space
-    # General input validation
-
     # Optimizations: 
     # Use a doubly-linked list + hashmap for better cell performance
     # Implement bounds checking
