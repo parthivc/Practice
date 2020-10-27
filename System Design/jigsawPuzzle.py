@@ -31,7 +31,9 @@ class Puzzle:
     def solve(self):
         # Iterate through the grid
         # If a piece is a corner piece or edge, rotate accordingly
+        # Work outside in, doing corners and edges first
         # Otherwise, rotate pieces internally based on their rotation
+        # Check if one piece matches another in its current orientation
         print(self.grid)
 
 
