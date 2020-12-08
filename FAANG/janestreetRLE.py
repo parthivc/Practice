@@ -93,6 +93,5 @@ def main():
     rle.reset()
 
 
-
 if __name__ == "__main__":
     main()
