@@ -1,5 +1,6 @@
 # ID Allocator with all combinations of runtime
 
+import sys
 import time
 import multiprocessing
 import math
@@ -75,11 +76,11 @@ def singleSetAllocator():
 
 
 def main():
-    idCount = 10 ** 5
+    idCount = int(sys.argv[1]) if len(sys.argv) == 2 else 10 ** 5
 
-    processCount = min(max(2, round(math.log10(idCount)) - 2), multiprocessing.cpu_count() // 2)
+    processCount = min(max(2, round(math.log10(idCount)) - 1), multiprocessing.cpu_count() // 2)
     print("\nAllocating IDs concurrently, using {} processes".format(processCount))
-    newAllocator = idAllocator(10 ** 6)
+    newAllocator = idAllocator(idCount)
     startTime = time.time()
     pool = multiprocessing.Pool(processes=processCount)
     ids = pool.map(newAllocator.allocate, range(idCount))
@@ -89,7 +90,7 @@ def main():
 
     print("\nAllocating IDs synchronously")
     startTime = time.time()
-    allocator = idAllocator(10 ** 6)
+    allocator = idAllocator(idCount)
     ids = [allocator.allocate() for _ in range(idCount)]
     for i in ids:
         allocator.release(i)

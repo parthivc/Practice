@@ -51,7 +51,7 @@ class idAllocator:
 
 
 def main():
-    idCount = 10 ** 5
+    idCount = int(sys.argv[1]) if len(sys.argv) == 2 else 10 ** 5
 
     print("\nAllocating IDs synchronously")
     startTime = time.time()
