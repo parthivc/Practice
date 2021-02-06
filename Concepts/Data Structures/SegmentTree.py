@@ -1,7 +1,6 @@
 # ID Allocator with all combinations of runtime
 
 import time
-import multiprocessing
 import math
 
 
@@ -51,45 +50,12 @@ class idAllocator:
             self.available += 1
 
 
-# O(1) allocation and release can be achieved by using a 'used' and 'available' hashset pair
-# Lowest storage uses a bit array for ids and linear search for allocation and release
-# A single set can be used to store available ids
-
-def singleSetAllocator():
-    def constructor(s):
-        size = s
-        availableIDs = set(range(s))
-
-    def allocate(availableIDs, size, specificID=None):
-        if availableIDs:
-            size -= 1
-            if specificID in availableIDs:
-                availableIDs.remove(specificID)
-                return specificID
-            return availableIDs.pop()
-        return "No IDs available"
-
-    def release(availableIDs, size, currentID):
-        availableIDs.add(currentID)
-        size += 1
-
-
 def main():
     idCount = 10 ** 5
 
-    processCount = min(max(2, round(math.log10(idCount)) - 2), multiprocessing.cpu_count() // 2)
-    print("\nAllocating IDs concurrently, using {} processes".format(processCount))
-    newAllocator = idAllocator(10 ** 6)
-    startTime = time.time()
-    pool = multiprocessing.Pool(processes=processCount)
-    ids = pool.map(newAllocator.allocate, range(idCount))
-    pool.map(newAllocator.release, ids)
-    duration = time.time() - startTime
-    print("IDs allocated: {}\nTime Taken: {:.4f} seconds".format(idCount, duration))
-
     print("\nAllocating IDs synchronously")
     startTime = time.time()
-    allocator = idAllocator(10 ** 6)
+    allocator = idAllocator(idCount)
     ids = [allocator.allocate() for _ in range(idCount)]
     for i in ids:
         allocator.release(i)
