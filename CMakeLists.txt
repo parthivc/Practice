@@ -4,4 +4,5 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(
         Coding_Practice main.cpp
+        // Coding_Practice Assessments/2sigmaOA.cpp
 )
