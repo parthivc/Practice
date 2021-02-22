@@ -5,6 +5,6 @@ using namespace std;
 // Problem Statement:
 
 int main() {
-    cout << "Hello, World!" << endl;
+    cout << "\nHello, World!\n" << endl;
     return 0;
 }

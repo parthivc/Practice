@@ -1,8 +1,12 @@
-cmake_minimum_required(VERSION 3.16)
-project(Coding_Practice)
-set(CMAKE_CXX_STANDARD 20)
+cmake_minimum_required(VERSION 3.17)
+project(Coding\ Practice)
+
+set(CMAKE_CXX_STANDARD 14)
+include_directories(. )
+
+
 
 add_executable(
-        Coding_Practice main.cpp
-        // Coding_Practice Assessments/2sigmaOA.cpp
+        main ${PROJECT_SOURCE_DIR}/main.cpp
+        # main ${PROJECT_SOURCE_DIR}/Assessments/hrtOA.cpp
 )
