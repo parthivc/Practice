@@ -1,4 +1,0 @@
-"/Users/parthiv/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/203.7148.70/CLion.app/Contents/bin/cmake/mac/bin/cmake" -G "CodeBlocks - Unix Makefiles" "/Users/parthiv/Documents/College/Coding Practice"
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/parthiv/Documents/College/Coding Practice/cmake-build-run

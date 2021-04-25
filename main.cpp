@@ -2,9 +2,9 @@
 
 using namespace std;
 
-// Problem Statement:
+// Problem Statement: 
 
 int main() {
-    cout << "\nHello, World!\n" << endl;
+    cout << "Hello, World!" << endl;
     return 0;
 }
